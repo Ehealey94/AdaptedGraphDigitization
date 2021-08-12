@@ -21,7 +21,7 @@ TETFiles.name
 TETfileID='523893';
 
 inputpath=[Directory Participant TETfileID '/'];
-outputpath=[Directory 'Digitised/'];
+outputpath=[Directory Participant 'Digitised/'];
 
 EEGinpath=['/Users/jachs/Desktop/Vanessa/DreemEEG/Vanessa_DreemEEG/' Participant '5-rej_by_epochs/'];
     
@@ -41,7 +41,7 @@ else
     dimensions=[];
 end
 
-%%  Load the EEG to find out length of file
+%  Load the EEG to find out length of file
 
 findfiles=dir([EEGinpath '/*' TETfileID '*.set']);
 % if isempty(findfiles)
@@ -54,7 +54,7 @@ EEG = pop_loadset('filename',EEGfilename,'filepath',EEGinpath);
 n_epochs=length(EEG.urevent); %number of epochs before rejection
 rej_epochs=EEG.rejepoch; %vector of rejected epochs
 
-%% Digitize the images
+% Digitize the images
 
 for f= 1:length(files)
     
