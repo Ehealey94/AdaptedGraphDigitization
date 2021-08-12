@@ -7,7 +7,7 @@
 % TET: /Users/jachs/Desktop/Vanessa/TETDataVHKRenamed/10-Hypnosis/523893/
 % EEG:
 % /Users/jachs/Desktop/Vanessa/DreemEEG/Vanessa_DreemEEG/10-Hypnosis/5-rej_by_epochs/523893_etc.set
-%% 
+%%
 
 % DEFINE TET filepath
 Directory='/Users/jachs/Desktop/Vanessa/TETDataVHKRenamed/';
@@ -16,6 +16,7 @@ Participant='10-Hypnosis/';
 % Print the names of TET files
 TETFiles=dir ([Directory Participant]);
 TETFiles.name
+
 %% Manually call each TETfile
 TETfileID='523893';
 
@@ -50,7 +51,7 @@ EEGfilename=findfiles.name;
 EEG=[];
 EEG = pop_loadset('filename',EEGfilename,'filepath',EEGinpath);
 
-n_epochs=length(EEG.urevent);
+n_epochs=length(EEG.urevent); 
 rej_epochs=EEG.rejepoch;
 
 %% Digitize the images
@@ -94,7 +95,7 @@ for f= 1:length(files)
  
 end
 figure; plot(dimensions(:,f))
-%% Check if the files were digitized correctly, else correc
+%% Check if the files were digitized correctly, if not, correct the image
 
 % plot the image next to the vector
 close all

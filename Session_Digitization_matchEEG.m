@@ -51,8 +51,8 @@ EEGfilename=findfiles.name;
 EEG=[];
 EEG = pop_loadset('filename',EEGfilename,'filepath',EEGinpath);
 
-n_epochs=length(EEG.urevent);
-rej_epochs=EEG.rejepoch;
+n_epochs=length(EEG.urevent); %number of epochs before rejection
+rej_epochs=EEG.rejepoch; %vector of rejected epochs
 
 %% Digitize the images
 
