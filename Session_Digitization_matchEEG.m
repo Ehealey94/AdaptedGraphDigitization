@@ -11,21 +11,21 @@
 
 % DEFINE TET filepath
 Directory='/Users/jachs/Desktop/Vanessa/TETDataVHKRenamed/';
-Participant='10-Hypnosis/';
+Participant='13-Vipassana/';
 
 % Print the names of TET files
 TETFiles=dir ([Directory Participant]);
 TETFiles.name
 
 %% Manually call each TETfile
-TETfileID='523893';
+TETfileID='882599';
 
 inputpath=[Directory Participant TETfileID '/'];
 outputpath=[Directory Participant 'Digitised/'];
 
 EEGinpath=['/Users/jachs/Desktop/Vanessa/DreemEEG/Vanessa_DreemEEG/' Participant '5-rej_by_epochs/'];
     
-mkdir(outputpath) 
+% mkdir(outputpath) 
 
 cd (inputpath)
 
@@ -94,8 +94,8 @@ for f= 1:length(files)
 %     save(outputfile,'dimensions');
  
 end
-figure; plot(dimensions(:,f))
-%% Check if the files were digitized correctly, if not, correct the image
+
+% Check if the files were digitized correctly, if not, correct the image
 
 % plot the image next to the vector
 close all
@@ -115,11 +115,12 @@ for f=1:length(files) %this next
     sgtitle(files(f).name);
     
 end
-%% Now remove the epochs removed in cleaning and save
+
+% Now remove the epochs removed in cleaning and save
 
 dimensions(rej_epochs,:)=[];
-
-if length(EEG.epoch)~=length(dimensions)
+%
+if length(EEG.epoch)~=size(dimensions,1)
     warning (['The TET and EEG epochs are not the same length in file ' TETfileID])
 else
     save(outputfile,'dimensions');
