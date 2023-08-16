@@ -1,4 +1,4 @@
-function y_points = digitize_graph(path_to_image, x_points)
+function y_points = digitize_graph_autocrop(path_to_image, x_points)
 % DIGITIZE_GRAPH Digitize a graph.
 %   DIGITIZE_GRAPH(PATH_TO_IMAGE) digitizes a graph in the given path. Note
 %   that the given file must be in some image format (e.g. jpg, png, gif),
@@ -10,9 +10,29 @@ function y_points = digitize_graph(path_to_image, x_points)
 %   takes out red and green tones before grey scaling
 % 
 image_size = [640, 860];
+% image_size = [1280, 1720];
 
 % Open the image as grayscale image
+
 I = flipud(imread(path_to_image));
+% I=imrotate(I, -90, 'bilinear'); %THIS WAS ADDED FOR DMT SCREENSHOTS
+%I = imread(path_to_image);
+% ensure image is right orientation
+% if length(I)==2479
+%     disp('nothing done')
+% elseif length(I)==3508
+% %     I=imread(path_to_image)
+%     I=imrotate(I, -90, 'bilinear');
+% end
+
+% Done to check if possible to flip image
+% I=imread(path_to_image);
+% if length(I)==3508
+%     disp('\n nothing done \n')
+% elseif length(I)==2479
+%     I=imread(path_to_image)
+%     I=imrotate(I, 90, 'bilinear');
+% end
 I = imresize(I, image_size);
 
 %[Cut,rect] = imcrop(I); %[82.5100000000000,0.510000000000000,737.980000000000,414.980000000000]
@@ -41,11 +61,11 @@ if size(Cut,3)==1
    % gray_img = imadjust(Cut);
 else
     
-    RGB2 = imadjust(Cut,[.1 .2 0; .9 .8 1],[]);
-    gray_img=rgb2gray(RGB2);
-    gray_img = imadjust(gray_img,[0.97 0.98],[0 1]);
+    RGB2 = imadjust(Cut,[.1 .2 0; .9 .8 1],[]); %increases contrast of image
+    gray_img=rgb2gray(RGB2); %grayscale image
+    gray_img = imadjust(gray_img,[0.97 0.98],[0 1]); %increase contrast
    
-  %  figure; imshow(gray_img);
+    figure; imshow(gray_img);
     
     
    % close all

@@ -4,7 +4,7 @@
 clear all
 Directory='C:\Users\evanl\Documents\TET\';
 Participant='s14\';
-Week='week_4\'%, 'week_2\', 'week_3\', 'week_4\'};
+Week='week_3\'%, 'week_2\', 'week_3\', 'week_4\'};
 Session='02\'%, '02\', '03\', '04\', '05\', '06\', '07\'}; 
 
 inputpath=[Directory Participant Week]
@@ -89,10 +89,10 @@ end
 
 %% For loop to rename files
 
-Sesh={'01\','02\'}; 
+sesh={'03\', '04\', '05\', '06\'}; 
 
-for i=1:length(Sesh)
-    Session = Sesh{i};
+for i=1:length(sesh)
+    Session = sesh{i};
     inputpath= [Directory Participant Week Session]
     cd(inputpath)
     files=dir('*.jpg');
@@ -187,7 +187,7 @@ end
 Wk={'week_1\', 'week_2\', 'week_3\', 'week_4\'}
 Sesh={'01\','02\', '03\', '04\', '05\', '06\', '07\'};
 
-for w=4%:length(Wk)
+for w=3%:length(Wk)
     Week=Wk{w};
     cd([Directory Participant Week])
 %     files=dir('*.pptx')
@@ -245,8 +245,8 @@ end
 
 
 %% Check if the files were digitized correctly
-Week='week_4\'
-Session=Sesh{2}
+Week='week_3\'
+Session=Sesh{5}
 cd([Directory Participant Week Session])
 outputpath=[Directory Participant Week 'Digitised\' Session];
 n_epochs=week_length(outputpath);
@@ -274,7 +274,7 @@ end
 
 
 %% If not similar, try and replace with crop method:
-bad_dims = [2 14];
+bad_dims = [2 3 4 6 8 10 13];
 
 for f=bad_dims
     close all

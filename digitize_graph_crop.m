@@ -1,4 +1,4 @@
-function y_points = digitize_graph(path_to_image, x_points)
+function y_points = digitize_graph_crop(path_to_image, x_points)
 % DIGITIZE_GRAPH Digitize a graph.
 %   DIGITIZE_GRAPH(PATH_TO_IMAGE) digitizes a graph in the given path. Note
 %   that the given file must be in some image format (e.g. jpg, png, gif),
@@ -9,9 +9,12 @@ function y_points = digitize_graph(path_to_image, x_points)
 %   be in range [0,1].
 %   takes out red and green tones before grey scaling
 % 
-image_size = [640, 860];
+image_size = [640, 860]; % This is OG from B's script
+% image_size = [1280, 1720];
 % Open the image as grayscale image
 I = flipud(imread(path_to_image));
+% I=imrotate(I, -90, 'bilinear');
+% I=imread(path_to_image);
 I = imresize(I, image_size);
 [Cut,rect] = imcrop(I);
  

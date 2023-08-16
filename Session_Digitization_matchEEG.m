@@ -17,6 +17,13 @@ Participant='13-Vipassana/';
 TETFiles=dir ([Directory Participant]);
 TETFiles.name
 
+%% Define EEG pathways
+
+EEG_directory = 'C:\Users\evanl\Documents\Dreem_Pilot\';
+Participant='s02\';
+Week='week_1\';
+Session='1\';
+
 %% Manually call each TETfile
 TETfileID='882599';
 
